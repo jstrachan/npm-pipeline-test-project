@@ -30,6 +30,8 @@ def cd (b){
     }
 
     stage('release'){
+        sh "git config user.email fabric8-admin@googlegroups.com"
+        sh "git config user.name fabric8-release"
         sh 'npm version patch'
         sh "GIT_BRANCH=${b} npm run semantic-release"
     }
