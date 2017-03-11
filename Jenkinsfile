@@ -30,7 +30,7 @@ fabric8UITemplate{
             releaseVersion = utils.getLatestVersionFromTag()
         }
 
-        pipeline.updateDownstreamProjects(releaseVersion)
+        // pipeline.updateDownstreamProjects(releaseVersion)
       }
     }
   }
