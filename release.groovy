@@ -1,6 +1,6 @@
 #!/usr/bin/groovy
 
-def ci (){
+def runCI (){
     stage('build'){
         sh 'npm install'
     }
@@ -9,7 +9,7 @@ def ci (){
     }
 }
 
-def cd (b){
+def runCD (b){
     // stage('fix git repo'){
     //     sh './fix-git-repo.sh'
     // }
@@ -27,3 +27,4 @@ def cd (b){
         sh "GIT_BRANCH=${b} npm run semantic-release"
     }
 }
+return this

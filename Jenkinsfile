@@ -7,22 +7,21 @@ fabric8UITemplate{
   clientsNode{
     ws {
       git "https://github.com/${org}/${repo}.git"
-      
       readTrusted 'release.groovy'
-      def pipeline = load 'release.groovy'
+      def p = load 'release.groovy'
 
       if (utils.isCI()){
         container('ui'){
-          pipeline.ci()
+          p.runCI()
         }
       } else if (utils.isCD()){
         def branch
         container('clients'){
             branch = utils.getBranch()
         }
-        
+
         container('ui'){
-          pipeline.cd()
+          p.runCD(branch)
         }
 
         def releaseVersion
