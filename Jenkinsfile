@@ -1,8 +1,8 @@
 #!/usr/bin/groovy
 @Library('github.com/rawlingsj/fabric8-pipeline-library@master')
 def utils = new io.fabric8.Utils()
-def org = 'rawlingsj'
-def repo = 'ngx-login-client'
+def org = 'fabric8-ui'
+def repo = 'npm-pipeline-test-project'
 fabric8UITemplate{
   clientsNode{
     ws {
