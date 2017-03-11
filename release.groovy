@@ -35,9 +35,11 @@ def cd (b){
         sh 'chmod 600 /root/.ssh-git/ssh-key'
         sh 'chmod 600 /root/.ssh-git/ssh-key.pub'
         sh 'chmod 700 /root/.ssh-git'
-        
+
         sh 'npm version patch'
         sh 'git push origin master --tags'
+        input id: 'Proceed', message: "ok"
+        
         sh 'npm publish'
         //sh "GIT_BRANCH=${b} npm run semantic-release"
     }
