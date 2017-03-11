@@ -33,7 +33,9 @@ def cd (b){
         sh "git config user.email fabric8-admin@googlegroups.com"
         sh "git config user.name fabric8-release"
         sh 'npm version patch'
-        sh "GIT_BRANCH=${b} npm run semantic-release"
+        sh 'git push origin master --tags'
+        sh 'npm publish'
+        //sh "GIT_BRANCH=${b} npm run semantic-release"
     }
 }
 

@@ -7,8 +7,8 @@ fabric8UITemplate{
   clientsNode{
     ws {
       git "https://github.com/${org}/${repo}.git"
-      
       readTrusted 'release.groovy'
+      sh "git remote set-url origin git@github.com:${org}/${repo}.git"
       def pipeline = load 'release.groovy'
 
       if (utils.isCI()){
