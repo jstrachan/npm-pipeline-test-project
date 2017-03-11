@@ -5,10 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
+    "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts",
+    "semantic-release": "semantic-release pre && gulp scripts && cp -r .git dist && npm publish dist/ && semantic-release post"
   },
   "keywords": [],
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabric8-ui/npm-pipeline-test-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fabric8-ui/npm-pipeline-test-project/issues"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/body-parser": "0.0.33",
