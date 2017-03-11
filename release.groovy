@@ -30,6 +30,7 @@ def cd (b){
     }
 
     stage('release'){
+        sh 'npm version patch'
         sh "GIT_BRANCH=${b} npm run semantic-release"
     }
 }
