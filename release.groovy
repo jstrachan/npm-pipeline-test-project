@@ -30,25 +30,7 @@ def cd (b){
     }
 
     stage('release'){
-        sh "git config user.email fabric8-admin@googlegroups.com"
-        sh "git config user.name fabric8-release"
-        sh 'chmod 600 /root/.ssh-git/ssh-key'
-        sh 'chmod 600 /root/.ssh-git/ssh-key.pub'
-        sh 'chmod 700 /root/.ssh-git'
-
-        String npmToken = readFile '/home/jenkins/.npm-token/token'
-        String ghToken = readFile '/home/jenkins/.apitoken/hub'
-        wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [
-            [password: npmToken, var: 'NPM_PASSWORD'],
-            [password: ghToken, var: 'GH_PASSWORD']]]) {
-        
-            sh """
-            export NPM_TOKEN=${npmToken} 
-            export GITHUB_TOKEN=${ghToken} 
-            export GIT_BRANCH=${b}
-            npm run semantic-release
-            """
-        }
+        npmRelease{}
     }
 }
 
