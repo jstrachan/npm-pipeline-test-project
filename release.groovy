@@ -41,7 +41,7 @@ def cd (b){
         input id: 'Proceed', message: "ok"
 
         //sh 'npm publish'
-        //sh "GIT_BRANCH=${b} npm run semantic-release"
+        sh "GIT_BRANCH=${b} npm run semantic-release"
     }
 }
 
