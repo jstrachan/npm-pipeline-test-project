@@ -46,6 +46,7 @@ def cd (b){
                 sh """
                 export NPM_TOKEN=${npmToken} 
                 export GITHUB_TOKEN=${ghToken} 
+                export GIT_BRANCH=${b}
                 npm run semantic-release
                 """
             } catch (err) {
