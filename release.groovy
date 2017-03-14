@@ -36,7 +36,7 @@ def cd (b){
         // sh 'chmod 600 /root/.ssh-git/ssh-key.pub'
         // sh 'chmod 700 /root/.ssh-git'
 
-        String npmToken = readFile '/home/jenkins/.npm/.token'
+        String npmToken = readFile '/home/jenkins/.npm-token/token'
         String ghToken = readFile '/home/jenkins/.apitoken/hub'
         wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [
             [password: npmToken, var: 'NPM_PASSWORD'],

@@ -22,8 +22,6 @@ fabric8UITemplate{
         }
         
         container('ui'){
-          echo "p ${pipeline}"
-          echo "b ${branch}"
           pipeline.cd(branch)
         }
 
