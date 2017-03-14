@@ -42,17 +42,12 @@ def cd (b){
             [password: npmToken, var: 'NPM_PASSWORD'],
             [password: ghToken, var: 'GH_PASSWORD']]]) {
         
-            try {
-                sh """
-                export NPM_TOKEN=${npmToken} 
-                export GITHUB_TOKEN=${ghToken} 
-                export GIT_BRANCH=${b}
-                npm run semantic-release
-                """
-            } catch (err) {
-                echo "${err}"
-                input id: 'Proceed', message: "ok"
-            }
+            sh """
+            export NPM_TOKEN=${npmToken} 
+            export GITHUB_TOKEN=${ghToken} 
+            export GIT_BRANCH=${b}
+            npm run semantic-release
+            """
         }
     }
 }
