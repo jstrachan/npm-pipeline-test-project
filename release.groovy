@@ -30,24 +30,25 @@ def cd (b){
     }
 
     stage('release'){
-        sh "git config user.email fabric8-admin@googlegroups.com"
-        sh "git config user.name fabric8-release"
-        sh 'chmod 600 /root/.ssh-git/ssh-key'
-        sh 'chmod 600 /root/.ssh-git/ssh-key.pub'
-        sh 'chmod 700 /root/.ssh-git'
-        sh 'cp /home/jenkins/.npm/.npmrc /home/jenkins/.npmrc'
-        //sh 'npm version patch'
-        //sh 'git push origin master --tags'
-        //input id: 'Proceed', message: "ok"
+        // sh "git config user.email fabric8-admin@googlegroups.com"
+        // sh "git config user.name fabric8-release"
+        // sh 'chmod 600 /root/.ssh-git/ssh-key'
+        // sh 'chmod 600 /root/.ssh-git/ssh-key.pub'
+        // sh 'chmod 700 /root/.ssh-git'
 
-        //sh 'npm publish'
-        try {
-            sh "npm run semantic-release"
-        } catch (err) {
-            echo "${err}"
-            input id: 'Proceed', message: "ok"
-        }
+        String npmToken = readFile '/home/jenkins/.npm/.token'
+        String ghToken = readFile '/home/jenkins/.apitoken/hub'
+        wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [
+            [password: npmToken, var: 'NPM_PASSWORD'],
+            [password: ghToken, var: 'GH_PASSWORD']]]) {
         
+            try {
+                sh "NPM_TOKEN=${npmToken} GH_TOKEN=${ghToken} npm run semantic-release"
+            } catch (err) {
+                echo "${err}"
+                input id: 'Proceed', message: "ok"
+            }
+        }
     }
 }
 
