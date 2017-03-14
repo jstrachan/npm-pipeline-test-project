@@ -1,5 +1,5 @@
 {
-  "name": "npm-pipeline-test-project",
+  "name": "fabric8-npm-pipeline-test-prj",
   "version": "0.0.0-development",
   "description": "Auth and User services for Angular v2 and up. Requires backend REST service.",
   "main": "bundles/login.umd.js",
