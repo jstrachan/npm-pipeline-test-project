@@ -38,10 +38,16 @@ def cd (b){
         sh 'cp /home/jenkins/.npm/.npmrc /home/jenkins/.npmrc'
         //sh 'npm version patch'
         //sh 'git push origin master --tags'
-        input id: 'Proceed', message: "ok"
+        //input id: 'Proceed', message: "ok"
 
         //sh 'npm publish'
-        sh "GIT_BRANCH=${b} npm run semantic-release"
+        try {
+            sh "npm run semantic-release"
+        } catch (err) {
+            echo "${err}"
+            input id: 'Proceed', message: "ok"
+        }
+        
     }
 }
 

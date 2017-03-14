@@ -21,7 +21,7 @@
     "start": "webpack-dev-server --config config/webpack.demo.js --progress --host 0.0.0.0 --port 3001 --profile --watch --content-base src/",
     "transpile": "gulp transpile",
     "test": "karma start",
-    "semantic-release": "semantic-release pre --no-debug && npm run build && cp -r .git dist && npm publish dist/ && semantic-release post",
+    "semantic-release": "semantic-release pre && npm run build && cp -r .git dist && npm publish dist/ && semantic-release post",
     "watch:library": "gulp watch"
   },
   "license": "Apache-2.0",
@@ -183,6 +183,7 @@
   },
   "release": {
     "branch": "master",
+    "debug": false,
     "verifyConditions": {
       "path": "./node_modules/@krux/condition-jenkins"
     }
