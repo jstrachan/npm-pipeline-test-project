@@ -32,7 +32,6 @@ fabric8UITemplate{
         }
 
         if (published){
-          echo 'we would updateDownstreamProjects'
           pipeline.updateDownstreamProjects(releaseVersion)
         }
       }
