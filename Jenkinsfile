@@ -21,8 +21,9 @@ fabric8UITemplate{
             branch = utils.getBranch()
         }
         
+        def published
         container('ui'){
-          pipeline.cd(branch)
+          published = pipeline.cd(branch)
         }
 
         def releaseVersion
@@ -30,7 +31,10 @@ fabric8UITemplate{
             releaseVersion = utils.getLatestVersionFromTag()
         }
 
-        // pipeline.updateDownstreamProjects(releaseVersion)
+        if (published){
+          echo 'we would updateDownstreamProjects'
+          //pipeline.updateDownstreamProjects(releaseVersion)
+        }
       }
     }
   }
