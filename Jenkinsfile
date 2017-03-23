@@ -3,8 +3,8 @@
 def utils = new io.fabric8.Utils()
 def org = 'fabric8-ui'
 def repo = 'npm-pipeline-test-project'
-fabric8UITemplate{
-  clientsNode{
+fabric8UINode{
+  //clientsNode{
     ws {
       git "https://github.com/${org}/${repo}.git"
       readTrusted 'release.groovy'
@@ -17,7 +17,7 @@ fabric8UITemplate{
         }
       } else if (utils.isCD()){
         def branch
-        container('clients'){
+        container('ui'){
             branch = utils.getBranch()
         }
         
@@ -27,7 +27,7 @@ fabric8UITemplate{
         }
 
         def releaseVersion
-        container('clients'){
+        container('ui'){
             releaseVersion = utils.getLatestVersionFromTag()
         }
 
@@ -36,6 +36,6 @@ fabric8UITemplate{
         }
       }
     }
-  }
+  //}
 }
 
