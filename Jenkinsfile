@@ -4,38 +4,36 @@ def utils = new io.fabric8.Utils()
 def org = 'fabric8-ui'
 def repo = 'npm-pipeline-test-project'
 fabric8UINode{
-  //clientsNode{
-    ws {
-      git "https://github.com/${org}/${repo}.git"
-      readTrusted 'release.groovy'
-      sh "git remote set-url origin git@github.com:${org}/${repo}.git"
-      def pipeline = load 'release.groovy'
+  ws {
+    git "https://github.com/${org}/${repo}.git"
+    readTrusted 'release.groovy'
+    sh "git remote set-url origin git@github.com:${org}/${repo}.git"
+    def pipeline = load 'release.groovy'
 
-      if (utils.isCI()){
-        container('ui'){
-          pipeline.ci()
-        }
-      } else if (utils.isCD()){
-        def branch
-        container('ui'){
-            branch = utils.getBranch()
-        }
-        
-        def published
-        container('ui'){
-          published = pipeline.cd(branch)
-        }
+    if (utils.isCI()){
+      container('ui'){
+        pipeline.ci()
+      }
+    } else if (utils.isCD()){
+      def branch
+      container('ui'){
+          branch = utils.getBranch()
+      }
+      
+      def published
+      container('ui'){
+        published = pipeline.cd(branch)
+      }
 
-        def releaseVersion
-        container('ui'){
-            releaseVersion = utils.getLatestVersionFromTag()
-        }
+      def releaseVersion
+      container('ui'){
+          releaseVersion = utils.getLatestVersionFromTag()
+      }
 
-        if (published){
-          pipeline.updateDownstreamProjects(releaseVersion)
-        }
+      if (published){
+        pipeline.updateDownstreamProjects(releaseVersion)
       }
     }
-  //}
+  }
 }
 

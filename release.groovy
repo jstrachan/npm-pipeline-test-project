@@ -38,14 +38,14 @@ def cd (b){
 }
 
 def updateDownstreamProjects(v){
-    echo 'we would Update Downstream Projects'
-    // pushPackageJSONChangePR{
-    //     propertyName = 'ngx-login-client'
-    //     projects = [
-    //             'fabric8-ui/ngx-fabric8-wit',
-    //             'fabric8io/fabric8-ui'
-    //     ]
-    //     version = v
-    // }
+    pushPackageJSONChangePR{
+        propertyName = 'fabric8-npm-pipeline-test-prj'
+        projects = [
+                'fabric8-ui/fabric8-npm-dependencies'
+        ]
+        version = v
+        containerName = 'ui'
+        autoMerge = true
+    }
 }
 return this
