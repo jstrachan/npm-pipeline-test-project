@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-@Library('github.com/rawlingsj/fabric8-pipeline-library@test')
+@Library('github.com/rawlingsj/fabric8-pipeline-library@master')
 def utils = new io.fabric8.Utils()
 def org = 'fabric8-ui'
 def repo = 'npm-pipeline-test-project'
