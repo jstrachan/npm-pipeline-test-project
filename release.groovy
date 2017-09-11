@@ -39,7 +39,7 @@ def cd (b){
 
 def updateDownstreamProjects(v){
     pushPackageJSONChangePR{
-        propertyName = 'fabric8-npm-pipeline-test-prj'
+        propertyName = 'fabric8-npm-pipeline-test'
         projects = [
                 'fabric8-ui/fabric8-npm-dependencies'
         ]
