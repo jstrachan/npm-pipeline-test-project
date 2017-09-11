@@ -16,24 +16,24 @@ fabric8UINode{
         pipeline.ci()
       }
     } else if (utils.isCD()){
-    //   def branch
-    //   container('ui'){
-    //       branch = utils.getBranch()
-    //   }
+      def branch
+      container('ui'){
+          branch = utils.getBranch()
+      }
       
-    //   def published
-    //   container('ui'){
-    //     published = pipeline.cd(branch)
-    //   }
+      def published
+      container('ui'){
+        published = pipeline.cd(branch)
+      }
 
-    //   def releaseVersion
-    //   container('ui'){
-    //       releaseVersion = utils.getLatestVersionFromTag()
-    //   }
-    def releaseVersion = '0.0.3'
-      //if (published){
+      def releaseVersion
+      container('ui'){
+          releaseVersion = utils.getLatestVersionFromTag()
+      }
+    
+      if (published){
         pipeline.updateDownstreamProjects(releaseVersion)
-      //}
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
+import { Http, Response } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
 
 import { Broadcaster } from '../shared/broadcaster.service';
 import { Token } from '../user/token';
@@ -62,10 +63,11 @@ export class AuthenticationService {
   refreshToken() {
     if (this.isLoggedIn()) {
       let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({ headers: headers });
       let refreshTokenUrl = this.apiUrl + 'login/refresh';
       let refreshToken = localStorage.getItem('refresh_token');
       let body = JSON.stringify({'refresh_token': refreshToken});
-      this.http.post(refreshTokenUrl, body, headers)
+      this.http.post(refreshTokenUrl, body, options)
         .map((response: Response) => {
           let responseJson = response.json();
           let token = this.processTokenResponse(responseJson.token);
