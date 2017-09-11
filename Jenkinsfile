@@ -1,11 +1,12 @@
 #!/usr/bin/groovy
 @Library('github.com/rawlingsj/fabric8-pipeline-library@master')
 def utils = new io.fabric8.Utils()
+
 def org = 'fabric8-ui'
 def repo = 'npm-pipeline-test-project'
 fabric8UINode{
   ws {
-    git "https://github.com/${org}/${repo}.git"
+    checkout scm
     readTrusted 'release.groovy'
     sh "git remote set-url origin git@github.com:${org}/${repo}.git"
     def pipeline = load 'release.groovy'
