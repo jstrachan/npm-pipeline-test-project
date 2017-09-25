@@ -24,7 +24,6 @@
     "semantic-release": "semantic-release pre && npm run build && cp -r .git dist && npm publish dist/ && semantic-release post",
     "watch:library": "gulp watch"
   },
-  
   "license": "Apache-2.0",
   "contributors": [
     {
@@ -75,7 +74,7 @@
     "@angular/common": "4.4.0-RC.0",
     "@angular/compiler": "4.4.0-RC.0",
     "@angular/compiler-cli": "4.4.0-RC.0",
-    "@angular/core": "4.4.0-RC.0",
+    "@angular/core": "4.3.7",
     "@angular/forms": "4.4.0-RC.0",
     "@angular/http": "4.4.0-RC.0",
     "@angular/platform-browser": "4.4.0-RC.0",
