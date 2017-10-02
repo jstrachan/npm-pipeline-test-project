@@ -74,7 +74,7 @@
     "@angular/common": "4.4.0-RC.0",
     "@angular/compiler": "4.4.0-RC.0",
     "@angular/compiler-cli": "4.4.0-RC.0",
-    "@angular/core": "4.0.4a2287f3-9057-44dd-924a-cdea0dd0d2bc",
+    "@angular/core": "4.3.8",
     "@angular/forms": "4.4.0-RC.0",
     "@angular/http": "4.4.0-RC.0",
     "@angular/platform-browser": "4.4.0-RC.0",
